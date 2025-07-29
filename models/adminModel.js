@@ -10,3 +10,4 @@ const Admin = User.discriminator('Admin', adminSchema);
 
 // ✅ On exporte le modèle discriminateur, pas un nouveau model mongoose
 module.exports = Admin;
+
