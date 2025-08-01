@@ -23,6 +23,8 @@ app.use(morgan('dev'));          // Affiche les logs HTTP dans la console (utile
 app.use(express.json());         // Permet à Express de comprendre les corps de requêtes JSON (req.body)
 
 // ✅ Définition des routes 
+const adminRoutes = require('./routes/adminRoutes'); // Routes pour les administrateurs
+app.use('/api/admin', adminRoutes); // Préfixe pour les routes administrateurs
 
 // 📍 Démarrage du serveur sur le port défini dans .env ou sur 5000 par défaut
 const PORT = process.env.PORT || 5000;
