@@ -7,8 +7,8 @@ const providerSchema = new mongoose.Schema({
   },
   company: {
     type: String,
-  },
-}, { timestamps: true });
+  }
+})
 // Déclaration du discriminant
 const Provider = User.discriminator('Provider', providerSchema);
 

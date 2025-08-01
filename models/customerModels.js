@@ -19,7 +19,7 @@ const customerSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-}, { timestamps: true });
+});
 
 // Déclaration du discriminant
 const Customer = User.discriminator('Customer', customerSchema);

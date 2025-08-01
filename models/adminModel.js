@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const User = require('./userModel');
 const adminSchema = new mongoose.Schema({
 
-}, { timestamps: true });
+});
 
 // 🧩 Création du discriminateur "Admin" basé sur User
 const Admin = User.discriminator('Admin', adminSchema);
