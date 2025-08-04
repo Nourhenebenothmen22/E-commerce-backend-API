@@ -1,11 +1,11 @@
 const userModel = require('../models/userModel');
 const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res) => {
   try {
     const { fullname, email, password, phone } = req.body;
 
-    // Vérifier si l'email est déjà utilisé
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
@@ -14,19 +14,20 @@ exports.register = async (req, res) => {
       });
     }
 
-    // Créer un utilisateur (le hash sera appliqué automatiquement par le pre('save'))
-    const newUser = new userModel({
-      fullname,
-      email,
-      password,
-      phone
-    });
+    const newUser = await userModel.create({ fullname, email, password, phone });
 
-    await newUser.save();
+    // Création du token JWT
+    const token = jwt.sign(
+      { id: newUser._id, email: newUser.email, phone: newUser.phone },
+      process.env.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
 
+    // Renvoi du token dans la réponse
     res.status(201).json({
       status: 'success',
       message: 'User registered successfully',
+      token, // <-- ici
       user: {
         id: newUser._id,
         fullname: newUser.fullname,
@@ -43,6 +44,7 @@ exports.register = async (req, res) => {
     });
   }
 };
+
 
 
 
