@@ -8,7 +8,7 @@ const {
   updateCustomer,
   getCustomerById,
   getAllCustomers
-} = require('../controllers/customerController');
+} = require('../controllers/customerControllers');
 
 // ➕ Ajouter un client
 router.post('/', addCustomer);
