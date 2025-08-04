@@ -25,6 +25,13 @@ app.use(express.json());         // Permet à Express de comprendre les corps de
 // ✅ Définition des routes 
 const adminRoutes = require('./routes/adminRoutes'); // Routes pour les administrateurs
 app.use('/api/admin', adminRoutes); // Préfixe pour les routes administrateurs
+const userRoutes = require('./routes/userRoutes'); // Routes pour les utilisateurs
+app.use('/api/users', userRoutes); // Préfixe pour les routes utilisateurs
+const customerRoutes = require('./routes/customerRoutes'); // Routes pour les clients
+app.use('/api/customers', customerRoutes); // Préfixe pour les routes clients
+const productRoutes = require('./routes/productRoutes'); // Routes pour les produits
+app.use('/api/products', productRoutes); // Préfixe pour les routes produits
+
 
 // 📍 Démarrage du serveur sur le port défini dans .env ou sur 5000 par défaut
 const PORT = process.env.PORT || 5000;
