@@ -1,21 +1,21 @@
-API backend robuste pour une plateforme e-commerce complète avec authentification, gestion de produits, clients, fournisseurs et administrateurs.
-
+🛍️✨ API Backend E-Commerce – Robuste & Sécurisée
+🔧 Description du projet :
+Développement d'une API backend robuste destinée à une plateforme e-commerce complète, conçue pour répondre aux besoins des applications modernes avec une architecture modulaire et sécurisée.
 Fonctionnalités Principales
-🔐 Authentification sécurisée avec JWT et middleware de protection des routes
+🎯 Fonctionnalités principales :
+🔐 Authentification JWT pour la sécurisation des accès
 
-👑 Gestion des administrateurs (CRUD complet)
+📦 CRUD complet des produits
 
-👥 Gestion des utilisateurs (profils, commandes, etc.)
+👥 Gestion des utilisateurs & clients
 
-🛒 Gestion des produits avec suivi des stocks
+🧑‍💼 Administration des comptes administrateurs
 
-🤝 Gestion des fournisseurs et relations produits
+🏢 Gestion des fournisseurs
 
-📊 Statistiques (nombre d'admins, etc.)
+📊 Comptage & statistiques des entités (produits, utilisateurs...)
 
-⚙️ Configuration centralisée via variables d'environnement
-
-🔒 Sécurité renforcée avec Helmet et CORS
+📁 Architecture modulaire avec MVC (Models, Controllers, Routes)
 
 ⚙️ Technologies Utilisées
 
