@@ -17,48 +17,50 @@ Fonctionnalités Principales
 
 🔒 Sécurité renforcée avec Helmet et CORS
 
-Technologies Utilisées
-Backend: Node.js, Express.js
+⚙️ Technologies Utilisées
 
-Base de données: MongoDB (Atlas)
+| Catégorie             | Technologies / Outils                          |
+| --------------------- | ---------------------------------------------- |
+| **Backend**           | Node.js, Express.js                            |
+| **Base de données**   | MongoDB (hébergée sur MongoDB Atlas)           |
+| **Authentification**  | JWT (JSON Web Tokens)                          |
+| **Sécurité**          | Helmet, CORS                                   |
+| **Logs / Monitoring** | Morgan                                         |
+| **Environnement**     | Dotenv (gestion des variables d'environnement) |
 
-Authentification: JWT (JSON Web Tokens)
 
-Sécurité: Helmet, CORS
+📁 Structure du projet e-commerce-api
 
-Logging: Morgan
+| Dossier/Fichier              | Description                                          |
+| ---------------------------- | ---------------------------------------------------- |
+| **`/config/`**               | Configuration générale du projet                     |
+| └── `db.js`                  | Configuration de la connexion à MongoDB              |
+| **`/controllers/`**          | Logique métier (CRUD, traitements...)                |
+| ├── `adminControllers.js`    | Contrôleur des administrateurs                       |
+| ├── `customerControllers.js` | Contrôleur des clients                               |
+| ├── `productControllers.js`  | Contrôleur des produits                              |
+| ├── `providerControllers.js` | Contrôleur des fournisseurs                          |
+| └── `userControllers.js`     | Contrôleur des utilisateurs                          |
+| **`/middleware/`**           | Middlewares personnalisés                            |
+| └── `authMiddleware.js`      | Middleware d’authentification JWT                    |
+| **`/models/`**               | Schémas et modèles Mongoose                          |
+| ├── `Admin.js`               | Modèle Admin                                         |
+| ├── `Customer.js`            | Modèle Client                                        |
+| ├── `Product.js`             | Modèle Produit                                       |
+| ├── `Provider.js`            | Modèle Fournisseur                                   |
+| └── `User.js`                | Modèle Utilisateur                                   |
+| **`/routes/`**               | Définition des endpoints de l’API                    |
+| ├── `adminRoutes.js`         | Routes des administrateurs                           |
+| ├── `customerRoutes.js`      | Routes des clients                                   |
+| ├── `productRoutes.js`       | Routes des produits                                  |
+| ├── `providerRoutes.js`      | Routes des fournisseurs                              |
+| └── `userRoutes.js`          | Routes des utilisateurs                              |
+| `.env`                       | Variables d’environnement (secrets, URL DB, etc.)    |
+| `.gitignore`                 | Fichiers/dossiers ignorés par Git                    |
+| `package.json`               | Liste des dépendances et scripts npm                 |
+| `package-lock.json`          | Verrouillage des versions des paquets                |
+| `server.js`                  | Fichier principal, point d’entrée du backend Express |
 
-Gestion d'environnement: Dotenv
-
-Structure du Projet
-e-commerce-api/
-├── config/           # Configuration de la base de données
-│   └── db.js
-├── controllers/      # Contrôleurs métier
-│   ├── adminControllers.js
-│   ├── customerControllers.js
-│   ├── productControllers.js
-│   ├── providerControllers.js
-│   └── userControllers.js
-├── middleware/       # Middlewares personnalisés
-│   └── authMiddleware.js
-├── models/           # Modèles Mongoose
-│   ├── Admin.js
-│   ├── Customer.js
-│   ├── Product.js
-│   ├── Provider.js
-│   └── User.js
-├── routes/           # Définition des routes
-│   ├── adminRoutes.js
-│   ├── customerRoutes.js
-│   ├── productRoutes.js
-│   ├── providerRoutes.js
-│   └── userRoutes.js
-├── .env              # Variables d'environnement
-├── .gitignore        # Fichiers ignorés par Git
-├── package.json      # Dépendances et scripts
-├── package-lock.json # Verrouillage des versions
-└── server.js         # Point d'entrée de l'application
 
 Démarrage du Serveur
 # Mode développement
