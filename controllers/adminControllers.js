@@ -37,20 +37,49 @@ exports.listAdmins = async (req, res) => {
 };
 
 exports.updateAdmin = async (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
+  
+  // 1. Vérifier la présence des données
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return res.status(400).json({
+      success: false,
+      message: "No data provided for update"
+    });
+  }
+
   try {
-    const updated = await Admin.findByIdAndUpdate(req.params.id, updateData, {
-      new: true,
-      runValidators: true,
-    }).select('-password');
+    // 2. Utiliser adminModel et req.body
+    const updated = await adminModel.findByIdAndUpdate(
+      id,
+      req.body, // ← Correction ici
+      {
+        new: true,
+        runValidators: true
+      }
+    ).select('-password');
 
     if (!updated) {
-      return res.status(404).json({ success: false, message: 'Admin not found' });
+      return res.status(404).json({
+        success: false,
+        message: 'Admin not found'
+      });
     }
 
-    res.status(200).json({ success: true, message: 'Admin updated', data: updated });
+    res.status(200).json({
+      success: true,
+      message: 'Admin updated',
+      data: updated
+    });
+    
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Error updating admin' });
+    // 3. Ajouter des logs pour le débogage
+    console.error("Update error:", error);
+    
+    res.status(500).json({
+      success: false,
+      message: 'Error updating admin',
+      error: error.message // ← Retourner l'erreur réelle
+    });
   }
 }
 exports.getAdminById = async (req, res) => {
@@ -66,9 +95,16 @@ exports.getAdminById = async (req, res) => {
 };
 exports.countAdmins = async (req, res) => {
   try {
+    console.log("Tentative de comptage des admins...");
     const count = await adminModel.countDocuments();
+    console.log(`Nombre d'admins trouvés: ${count}`);
     res.status(200).json({ success: true, totalAdmins: count });
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Error counting admins' });
+    console.error("Erreur de comptage:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error counting admins',
+      error: error.message // Ajoutez le message d'erreur
+    });
   }
 };
