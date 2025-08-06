@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const{register, login} = require('../controllers/userControllers');
-// Enregistrer un nouvel utilisateur (POST /api/users/register)
-router.post('/register',register);
-// Connexion d'un utilisateur (POST /api/users/login)
-router.post('/login',login);
+const {
+  register,
+  login,
+  getUserProfile,
+  getAllUsers
+} = require('../controllers/userControllers');
+const authMiddleware = require('../middleware/authMiddleware');
+
+// Public routes
+router.post('/register', register);
+router.post('/login', login);
+
+// Protected routes
+router.get('/:id', authMiddleware, getUserProfile);
+router.get('/', getAllUsers);
+
 module.exports = router;
