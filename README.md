@@ -137,5 +137,17 @@ npm start
 | GET     | `/api/customers/count` | Compter les clients      |
 
 
+🏢 Fournisseurs (Providers)
+| Méthode | Endpoint               | Description                   |
+| ------- | ---------------------- | ----------------------------- |
+| POST    | `/api/providers`       | Créer un fournisseur          |
+| GET     | `/api/providers`       | Lister tous les fournisseurs  |
+| GET     | `/api/providers/:id`   | Obtenir un fournisseur par ID |
+| PUT     | `/api/providers/:id`   | Mettre à jour un fournisseur  |
+| DELETE  | `/api/providers/:id`   | Supprimer un fournisseur      |
+| GET     | `/api/providers/count` | Compter les fournisseurs      |
+
+
+
 
 
